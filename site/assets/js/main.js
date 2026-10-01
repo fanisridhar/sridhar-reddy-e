@@ -74,6 +74,27 @@
   });
 
   var cfg = window.PORTFOLIO || {};
+
+  document.querySelectorAll("[data-copy-email]").forEach(function (btn) {
+    var label = btn.textContent;
+    btn.addEventListener("click", function () {
+      function done(ok) {
+        btn.textContent = ok ? "Copied!" : cfg.email;
+        setTimeout(function () {
+          btn.textContent = label;
+        }, 2200);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(cfg.email).then(
+          function () { done(true); },
+          function () { done(false); }
+        );
+      } else {
+        done(false);
+      }
+    });
+  });
+
   document.querySelectorAll("[data-email]").forEach(function (el) {
     el.setAttribute("href", "mailto:" + cfg.email);
     if (el.hasAttribute("data-email-text")) el.textContent = cfg.email;

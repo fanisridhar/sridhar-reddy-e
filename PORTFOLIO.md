@@ -39,3 +39,9 @@ Test the Worker logic offline: `node worker/test.mjs`
 ## Live GitHub data
 
 `projects.html` fetches your public repositories from the GitHub API in the browser (cached for 10 minutes, forks and archived repos hidden).
+
+## Notes on the design
+
+- Fonts are self-hosted in `site/assets/fonts/` (see `FONTS.txt`), so the site makes no third-party font requests.
+- The AURA screenshots load from the public images in the AURA README. To host them yourself, save them under `site/assets/img/` and point the `src` and `data-items` entries in `index.html` and `projects.html` at the local files.
+- The cricket illustration on the CricClash card is an original doodle, not a screenshot.
